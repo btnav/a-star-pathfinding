@@ -85,7 +85,7 @@ vector<Coord> a_star(
     prev[s] = nullopt;
     gscore[s] = 0.0;
     fscore[s] = heuristic(s, t);
-    open_nodes.push({fscore[s], (s == t) ? 0, s});
+    open_nodes.push({fscore[s], 0, s});
 
     while (!open_nodes.empty()) {
         auto [f, tie, n] = open_nodes.top();
