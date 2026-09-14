@@ -36,6 +36,33 @@ vector<Coord> reconstruct_path(
     return path;
 }
 
+vector<Coord> get_neighbours(
+    const Coord& node,
+    const Coord& goal,
+    const Grid& grid
+) {
+    vector<Coord> neigbours;
+    int col = node.first;
+    int row = node.second;
+
+    const int num_cols = static_cast<int>(grid.size());
+    const int num_rows = static_cast<int>(grid[0].size());
+    
+    if (row > 0 && grid[col][row - 1] == 1) {
+        neigbours.emplace_back(col, row - 1);
+    }
+    if (row < num_rows - 1 && grid[col][row + 1] == 1) {
+        neigbours.emplace_back(col, row + 1);
+    }
+    if (col > 0 && grid[col - 1][row] == 1) {
+        neigbours.emplace_back(col - 1, row);
+    }
+    if (col < num_cols - 1 && grid[col + 1][row] == 1) {
+        neigbours.emplace_back(col + 1, row);
+    }
+    return neigbours;
+}
+
 vector<Coord> a_star(
     const Grid& grid,
     const Coord& start,
@@ -74,7 +101,7 @@ vector<Coord> a_star(
 
         closed_nodes.insert(n);
 
-        for (const Coord& n_i : successor(n, t, grid)) {
+        for (const Coord& n_i : get_neighbours(n, t, grid)) {
 
             if (closed_nodes.count(n_i)) continue;
             double tentative_gscore = gscore[n] + 1.0;
