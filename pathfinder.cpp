@@ -41,7 +41,7 @@ vector<Coord> get_neighbours(
     const Coord& goal,
     const Grid& grid
 ) {
-    vector<Coord> neigbours;
+    vector<Coord> neighbours;
     int col = node.first;
     int row = node.second;
 
@@ -49,18 +49,18 @@ vector<Coord> get_neighbours(
     const int num_rows = static_cast<int>(grid[0].size());
     
     if (row > 0 && grid[col][row - 1] == 1) {
-        neigbours.emplace_back(col, row - 1);
+        neighbours.emplace_back(col, row - 1);
     }
     if (row < num_rows - 1 && grid[col][row + 1] == 1) {
-        neigbours.emplace_back(col, row + 1);
+        neighbours.emplace_back(col, row + 1);
     }
     if (col > 0 && grid[col - 1][row] == 1) {
-        neigbours.emplace_back(col - 1, row);
+        neighbours.emplace_back(col - 1, row);
     }
     if (col < num_cols - 1 && grid[col + 1][row] == 1) {
-        neigbours.emplace_back(col + 1, row);
+        neighbours.emplace_back(col + 1, row);
     }
-    return neigbours;
+    return neighbours;
 }
 
 vector<Coord> a_star(
@@ -119,3 +119,4 @@ vector<Coord> a_star(
     }
     return path;
 }
+
