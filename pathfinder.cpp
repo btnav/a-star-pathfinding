@@ -38,7 +38,6 @@ vector<Coord> reconstruct_path(
 
 vector<Coord> get_neighbours(
     const Coord& node,
-    const Coord& goal,
     const Grid& grid
 ) {
     vector<Coord> neighbours;
@@ -101,7 +100,7 @@ vector<Coord> a_star(
 
         closed_nodes.insert(n);
 
-        for (const Coord& n_i : get_neighbours(n, t, grid)) {
+        for (const Coord& n_i : get_neighbours(n, grid)) {
 
             if (closed_nodes.count(n_i)) continue;
             double tent_gscore = gscore[n] + 1.0;
