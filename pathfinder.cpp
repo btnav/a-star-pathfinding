@@ -5,11 +5,18 @@
 #include <tuple>
 #include <functional>
 #include <set>
+#include <cmath>
 
 using namespace std;
 
 using Coord = pair<int, int>;
 using Grid = vector<vector<int>>;
+
+double heuristic(const Coord& node, const Coord& goal) {
+    int dx = (node.first - goal.first);
+    int dy = (node.second - goal.second);
+    return static_cast<double>(sqrt(dx * dx + dy * dy));
+}
 
 vector<Coord> a_star(
     const Grid& grid,
