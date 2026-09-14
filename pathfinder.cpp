@@ -62,10 +62,10 @@ vector<Coord> get_successors(
 vector<Coord> a_star(
     const Grid& grid,
     const Coord& start,
-    const Coord& end
+    const Coord& target
 ) {                      
     Coord s = start;
-    Coord t = end;
+    Coord t = target;
     vector<Coord> path;
     map<Coord, optional<Coord>> prev;
     map<Coord, double> gscore;

@@ -121,7 +121,7 @@ Path get_successors(
 Path a_star(
     const Grid& grid,
     const Coord& start,
-    const Coord& end
+    const Coord& target
 );
 
 #endif // PATHFINDER_H
