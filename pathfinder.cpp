@@ -6,6 +6,7 @@
 #include <functional>
 #include <set>
 #include <cmath>
+#include <algorithm>
 
 using namespace std;
 
@@ -16,6 +17,23 @@ double heuristic(const Coord& node, const Coord& goal) {
     int dx = (node.first - goal.first);
     int dy = (node.second - goal.second);
     return static_cast<double>(sqrt(dx * dx + dy * dy));
+}
+
+vector<Coord> reconstruct_path(
+    const map<Coord, optional<Coord>>& prev,
+    const Coord& goal
+) {
+    Coord n = goal;
+    vector<Coord> path;
+    
+    while (prev.at(n).has_value()) {
+        path.push_back(n);
+        n = *prev.at(n);
+    }
+    path.push_back(n);
+    
+    reverse(path.begin(), path.end());
+    return path;
 }
 
 vector<Coord> a_star(
