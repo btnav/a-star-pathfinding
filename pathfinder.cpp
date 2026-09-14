@@ -1,3 +1,5 @@
+#include "pathfinder.h"
+
 #include <algorithm>
 #include <cmath>
 #include <functional>
@@ -16,12 +18,12 @@ double heuristic(const Coord& node, const Coord& target) {
     return static_cast<double>(sqrt(dx * dx + dy * dy));
 }
 
-vector<Coord> reconstruct_path(
+Path reconstruct_path(
     const map<Coord, optional<Coord>>& prev,
     const Coord& target
 ) {
     Coord n = target;
-    vector<Coord> path;
+    Path path;
     
     while (prev.at(n).has_value()) {
         path.push_back(n);
@@ -33,11 +35,11 @@ vector<Coord> reconstruct_path(
     return path;
 }
 
-vector<Coord> get_successors(
+Path get_successors(
     const Coord& node,
     const Grid& grid
 ) {
-    vector<Coord> successors;
+    Path successors;
     int col = node.first;
     int row = node.second;
 
@@ -59,14 +61,14 @@ vector<Coord> get_successors(
     return successors;
 }
 
-vector<Coord> a_star(
+Path a_star(
     const Grid& grid,
     const Coord& start,
     const Coord& target
 ) {                      
     Coord s = start;
     Coord t = target;
-    vector<Coord> path;
+    Path path;
     map<Coord, optional<Coord>> prev;
     map<Coord, double> gscore;
     map<Coord, double> fscore;
