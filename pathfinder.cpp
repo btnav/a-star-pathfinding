@@ -104,7 +104,7 @@ vector<Coord> a_star(
         for (const Coord& n_i : get_neighbours(n, t, grid)) {
 
             if (closed_nodes.count(n_i)) continue;
-            double tentative_gscore = gscore[n] + 1.0;
+            double tent_gscore = gscore[n] + 1.0;
 
             if (gscore.find(n_i) == gscore.end() || 
                 tent_gscore < gscore[n_i]) {
