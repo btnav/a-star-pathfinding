@@ -10,20 +10,17 @@
 
 using namespace std;
 
-using Coord = pair<int, int>;
-using Grid = vector<vector<int>>;
-
-double heuristic(const Coord& node, const Coord& goal) {
-    int dx = (node.first - goal.first);
-    int dy = (node.second - goal.second);
+double heuristic(const Coord& node, const Coord& target) {
+    int dx = (node.first - target.first);
+    int dy = (node.second - target.second);
     return static_cast<double>(sqrt(dx * dx + dy * dy));
 }
 
 vector<Coord> reconstruct_path(
     const map<Coord, optional<Coord>>& prev,
-    const Coord& goal
+    const Coord& target
 ) {
-    Coord n = goal;
+    Coord n = target;
     vector<Coord> path;
     
     while (prev.at(n).has_value()) {
