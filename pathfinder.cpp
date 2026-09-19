@@ -1,6 +1,7 @@
 #include "pathfinder.h"
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <functional>
 #include <map>
@@ -66,6 +67,8 @@ Path a_star(
     const Coord& start,
     const Coord& target
 ) {                      
+    auto start_time = chrono::steady_clock::now();
+    
     Coord s = start;
     Coord t = target;
     Path path;
@@ -94,6 +97,8 @@ Path a_star(
         if (fscore.count(n) && f > fscore[n]) continue;
 
         if (n == t) {
+            auto end_time = chrono::steady_clock::now();
+            double elapsed_us = chrono::duration_cast<chrono::microseconds>(end_time - start_time).count();
             return reconstruct_path(prev, t);
         }
 
