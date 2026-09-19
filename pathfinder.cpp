@@ -3,6 +3,21 @@
  * @author btnav (174347826+bt-nav@users.noreply.github.com)
  * @brief A C++ implementation of the A* pathfinding algorithm.
  * 
+ * This A* pathfinding algorithm is based on the pseudocode in [3], and the
+ * four steps outlined in [1]. To improve the algorithm given in [1], the check
+ * tent_g < g[n_i] has been added to to Step 4, as suggested in [2]. This is the 
+ * "graph search" version of A*, which is more efficient than the "tree search" 
+ * version in [1], as it avoids re-expanding nodes that have already been 
+ * expanded with a cheaper path. To get an optimal path from the graph search
+ * version, the heuristic must be admissible and consistent [2], which is 
+ * satisfied by Euclidean distance.
+ *
+ * A min-heap has been used to store the open nodes. When using a min-heap, the
+ * smallest f-score can be accessed by topping the heap, with a constant time
+ * complexity, O(1). Previously, a set was used. If using a set, nodes must be
+ * iterated over until the node with the smallest f-score is found. This gives
+ * a linear time complexity of O(n), which is less desirable.
+ *
  * Notation, from [1]:
  * n, a node.
  * s, the start node.
