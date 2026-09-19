@@ -1,7 +1,7 @@
 /**
  * @file pathfinder.h
  * @author btnav (174347826+bt-nav@users.noreply.github.com)
- * @brief Header for a C++ implementation of the A* pathfinding algorithm.
+ * @brief A C++ implementation of the A* pathfinding algorithm.
  *
  * Notation, from [1]:
  * n, a node.
@@ -31,6 +31,7 @@
  * https://en.wikipedia.org/w/index.php?title=A*_search_algorithm&oldid=1340884788#Pseudocode
  *
  * @date September 2026
+ *
  * @copyright Copyright (c) 2026, btnav (https://github.com/btnav).
  * All rights reserved. Released under the BSD 3-Clause License.
  *

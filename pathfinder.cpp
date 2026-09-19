@@ -1,3 +1,41 @@
+/**
+ * @file pathfinder.cpp
+ * @author btnav (174347826+bt-nav@users.noreply.github.com)
+ * @brief A C++ implementation of the A* pathfinding algorithm.
+ * 
+ * Notation, from [1]:
+ * n, a node.
+ * s, the start node.
+ * t, the target node.
+ * T, the set of target nodes, in this case T = {t}.
+ * Γ, the successor operator, which returns reachable neighbours.
+ * g, the cost function.
+ *    g(n) is the cost of the path from s to n.
+ * h, the heuristic function.
+ *    h(n) is the estimated cost of an optimal path from n to t.
+ * f, the evaluation function.
+ *    f(n) = g(n) + h(n), the estimated cost of a path from s to t, via n.
+ *
+ * References:
+ * [1] P. Hart, N. Nilsson, and B. Raphael, 'A Formal Basis for the Heuristic
+ * Determination of Minimum Cost Paths', IEEE Trans. Syst. Sci. Cyber., vol. 4,
+ * no. 2, pp. 100-107, 1968, doi: 10.1109/TSSC.1968.300136.
+ *
+ * [2] S. Russel and P. Norvig, 'A* search: Minimizing the total estimated
+ * solution cost', in Artificial Intelligence: A Modern Approach, 3rd ed. Upper
+ * Saddle River, NJ, 2009. Accessed: Mar. 20, 2026. [Online]. Available:
+ * https://aima.cs.berkeley.edu/3rd-ed/
+ *
+ * [3] 'A* search algorithm - Pseudocode', Wikipedia. Apr. 17, 2025. Accessed:
+ * Mar. 20, 2026. [Online]. Available:
+ * https://en.wikipedia.org/w/index.php?title=A*_search_algorithm&oldid=1340884788#Pseudocode
+ *
+ * @date September 2026
+ * 
+ * @copyright Copyright (c) 2026, btnav (https://github.com/btnav).
+ * All rights reserved. Released under the BSD 3-Clause License.
+ *
+ */
 #include "pathfinder.h"
 
 #include <algorithm>
